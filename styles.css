@@ -1,0 +1,315 @@
+/* ============================================================
+   CAFÉ TSILUBA — Identidad visual
+   Cafetería literaria (autodefinición real confirmada en TikTok/Instagram
+   del propio negocio) — la paleta y tipografía buscan evocar libros
+   viejos, tinta, cuero y hojas de papel, no el terracota/pastelería
+   cálida ya usado en otros proyectos del portafolio.
+   Insumo: dominio "color"/"typography" de la skill ui-ux-pro-max, query
+   "literary book cafe cozy reading nook warm library", adaptado a mano.
+   Paleta: tinta azul marino + cuero café + papel pergamino + latón
+   antiguo (como letras doradas en el lomo de un libro viejo).
+   Tipografía: EB Garamond (clásica de tipografía de libros, para
+   títulos y cuerpo) + Special Elite (máquina de escribir, para precios,
+   etiquetas y números de capítulo). Combinación no repetida en el
+   portafolio.
+   ============================================================ */
+
+:root{
+  --parchment:#F2E9D3;
+  --parchment-2:#E9DBB8;
+  --paper:#FBF6E9;
+  --ink:#1E2A3C;
+  --ink-2:#141C29;
+  --leather:#6B4226;
+  --leather-dark:#4E2F1B;
+  --brass:#AD8236;
+  --brass-light:#CDA24F;
+  --text:#2A2118;
+  --text-soft:#6B5C48;
+  --line:rgba(30,42,60,0.16);
+
+  --font-display:'EB Garamond', serif;
+  --font-body:'EB Garamond', serif;
+  --font-mono:'Special Elite', monospace;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  font-family:var(--font-body);
+  font-size:18px;
+  color:var(--text);
+  background:var(--parchment);
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+button{ font-family:inherit; cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+
+/* ---------- Loader ---------- */
+#loader{
+  position:fixed; inset:0; z-index:9999;
+  background:var(--ink-2);
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .4s ease, visibility .4s ease;
+}
+#loader.hidden{ opacity:0; visibility:hidden; }
+.loader-mark{
+  font-family:var(--font-mono);
+  color:var(--brass-light);
+  font-size:1.7rem;
+  letter-spacing:.08em;
+  animation:loaderPulse 1s ease-in-out infinite;
+}
+@keyframes loaderPulse{
+  0%,100%{ opacity:.5; transform:scale(.97); }
+  50%{ opacity:1; transform:scale(1); }
+}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  background:rgba(20,28,41,0.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(173,130,54,0.3);
+}
+.header-inner{
+  max-width:1200px; margin:0 auto;
+  display:flex; align-items:center; gap:24px;
+  padding:12px 24px;
+}
+.nav-brand{ display:flex; align-items:center; gap:10px; margin-right:auto; }
+.brand-word{ font-family:var(--font-display); font-weight:600; font-style:italic; color:var(--parchment); font-size:1.5rem; }
+.nav-links{ display:flex; gap:4px; }
+.nav-link{
+  background:none; border:none; color:var(--parchment);
+  opacity:.75; font-size:.92rem;
+  padding:8px 14px; border-radius:2px;
+  display:flex; align-items:center; gap:7px;
+  transition:opacity .2s ease, background .2s ease, transform .15s ease;
+}
+.nav-idx{ font-family:var(--font-mono); font-size:.68rem; color:var(--brass-light); opacity:.85; }
+.nav-link:hover{ opacity:1; background:rgba(173,130,54,0.18); }
+.nav-link.active{ opacity:1; background:rgba(173,130,54,0.28); }
+.nav-link.active .nav-idx{ color:var(--brass-light); }
+.nav-link:active{ transform:scale(.95); }
+.nav-cta{
+  background:var(--brass); color:var(--ink-2);
+  padding:9px 18px; border-radius:2px; font-weight:600; font-size:.9rem;
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.nav-cta:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(173,130,54,0.35); background:var(--brass-light); }
+.nav-cta:active{ transform:scale(.95); }
+
+.nav-toggle{
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; padding:6px;
+}
+.nav-toggle span{
+  width:24px; height:2px; background:var(--parchment); border-radius:2px;
+  transition:transform .25s ease, opacity .25s ease;
+}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-block; padding:13px 28px; border-radius:2px;
+  font-weight:600; font-size:1rem; border:1.5px solid transparent;
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn-primary{ background:var(--brass); color:var(--ink-2); }
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(173,130,54,0.35); background:var(--brass-light); }
+.btn-outline{ border-color:var(--parchment); color:var(--parchment); background:transparent; }
+.btn-outline:hover{ background:var(--parchment); color:var(--ink-2); transform:translateY(-2px); }
+.btn:active{ transform:scale(.95); }
+
+/* Botón outline usado fuera del hero (sobre fondo claro) */
+.section-inner .btn-outline{ border-color:var(--ink); color:var(--ink); }
+.section-inner .btn-outline:hover{ background:var(--ink); color:var(--parchment); }
+
+/* ---------- Tabs / SPA ---------- */
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; }
+main{ padding-top:64px; }
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative; min-height:90vh;
+  display:flex; align-items:center;
+  background:var(--ink-2);
+}
+.hero-photo{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.42;
+}
+.hero-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(20,28,41,0.55) 0%, rgba(20,28,41,0.78) 55%, rgba(20,28,41,0.95) 100%);
+}
+.hero-content{
+  position:relative; z-index:2; max-width:740px; margin:0 auto; padding:130px 24px 90px;
+  text-align:center; color:var(--parchment);
+}
+.hero-eyebrow{
+  font-family:var(--font-mono); font-weight:400; color:var(--brass-light);
+  font-size:.95rem; letter-spacing:.03em; margin-bottom:18px;
+}
+.hero-title{
+  font-family:var(--font-display); font-weight:600; font-style:italic;
+  font-size:clamp(2.1rem, 5vw, 3.3rem); line-height:1.25; margin-bottom:20px;
+}
+.hero-sub{ font-size:1.1rem; opacity:.88; max-width:560px; margin:0 auto 28px; line-height:1.7; }
+.hero-pills{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:32px; }
+.pill{
+  background:rgba(242,233,211,0.1); border:1px solid rgba(242,233,211,0.25);
+  padding:8px 16px; border-radius:2px; font-size:.85rem; display:flex; align-items:center; gap:8px;
+  font-family:var(--font-mono);
+}
+.dot{ width:8px; height:8px; border-radius:50%; background:#7fa66d; }
+.dot.closed{ background:#b5604a; }
+.hero-actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px; }
+
+/* ---------- Secciones generales ---------- */
+.section-inner{ max-width:1100px; margin:0 auto; padding:96px 24px; }
+.section-eyebrow{
+  font-family:var(--font-mono); font-weight:400; color:var(--brass);
+  font-size:.85rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px;
+}
+.section-title{
+  font-family:var(--font-display); font-weight:600; font-style:italic;
+  font-size:clamp(1.9rem, 4vw, 2.7rem); margin-bottom:20px; color:var(--ink);
+}
+.section-lead{ font-size:1.12rem; color:var(--text-soft); max-width:660px; line-height:1.75; margin-bottom:48px; }
+.drop-cap::first-letter{
+  font-family:var(--font-display); font-style:italic; font-weight:700;
+  font-size:3.4rem; float:left; line-height:.8; margin:.1em .08em 0 0; color:var(--leather);
+}
+
+/* ---------- Nosotros ---------- */
+.pilares-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%),1fr)); gap:24px; margin-bottom:60px; }
+.pilar-card{
+  background:var(--paper); border:1px solid var(--line); border-left:3px solid var(--brass);
+  padding:30px 26px; transition:transform .2s ease, box-shadow .2s ease;
+}
+.pilar-card:hover{ transform:translateY(-4px); box-shadow:0 16px 30px rgba(30,42,60,0.1); }
+.pilar-num{ font-family:var(--font-mono); color:var(--brass); font-size:1.5rem; display:block; margin-bottom:10px; }
+.pilar-card h3{ font-family:var(--font-display); font-weight:600; font-size:1.3rem; margin-bottom:10px; color:var(--ink); }
+.pilar-card p{ color:var(--text-soft); line-height:1.65; font-size:.98rem; }
+
+.nosotros-divider{ height:1px; background:repeating-linear-gradient(90deg, var(--brass) 0 8px, transparent 8px 16px); margin-bottom:60px; opacity:.6; }
+.nosotros-gallery{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(260px,100%),1fr)); gap:18px; }
+.gal-photo{ width:100%; height:280px; object-fit:cover; border-radius:2px; filter:sepia(.08); }
+
+/* ---------- Carta ---------- */
+.menu-note{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--brass);
+  padding:18px 22px; color:var(--text-soft); font-size:.96rem;
+  line-height:1.65; max-width:700px; margin-bottom:44px;
+}
+.menu-tabs{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
+.menu-tab-btn{
+  background:var(--paper); border:1px solid var(--line); color:var(--text-soft);
+  padding:9px 18px; border-radius:2px; font-family:var(--font-display); font-weight:600; font-size:.95rem;
+  transition:background .2s ease, color .2s ease, transform .15s ease;
+}
+.menu-tab-btn.active{ background:var(--ink); border-color:var(--ink); color:var(--parchment); }
+.menu-tab-btn:active{ transform:scale(.95); }
+.menu-panel{ display:none; }
+.menu-panel.active{ display:block; }
+.menu-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(300px,100%),1fr)); gap:16px; }
+.menu-item{
+  display:flex; justify-content:space-between; align-items:flex-start; gap:14px;
+  background:var(--paper); border:1px solid var(--line); padding:20px 22px;
+}
+.menu-item-name{ font-family:var(--font-display); font-weight:600; color:var(--ink); margin-bottom:4px; font-size:1.05rem; }
+.menu-item-desc{ color:var(--text-soft); font-size:.88rem; line-height:1.5; }
+.menu-item-price{ font-family:var(--font-mono); color:var(--leather); font-size:.85rem; white-space:nowrap; }
+
+/* ---------- Reseñas ---------- */
+.resenas-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px,100%),1fr)); gap:22px; margin-bottom:48px; }
+.review-card{ background:var(--paper); border:1px solid var(--line); padding:30px 28px; position:relative; }
+.review-card::before{
+  content:"\201C"; font-family:var(--font-display); font-style:italic; font-weight:700;
+  font-size:3rem; color:var(--brass); opacity:.5; line-height:1; display:block; margin-bottom:6px;
+}
+.review-stars{ color:var(--brass); letter-spacing:2px; margin-bottom:10px; font-size:.9rem; }
+.review-text{ font-size:1.05rem; font-style:italic; line-height:1.7; color:var(--ink); margin-bottom:16px; }
+.review-author{ font-family:var(--font-mono); color:var(--text-soft); font-size:.82rem; }
+
+/* ---------- Visítanos ---------- */
+.visit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start; }
+.visit-block{ margin-bottom:28px; }
+.visit-block h3{ font-family:var(--font-mono); font-weight:400; color:var(--brass); font-size:1rem; letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px; }
+.visit-block p{ color:var(--text-soft); line-height:1.65; }
+.hours-list{ margin-top:12px; }
+.hours-list li{ display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px dashed var(--line); font-size:.95rem; }
+.contact-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(190px,100%),1fr)); gap:12px; margin-top:12px; }
+.contact-box{
+  background:var(--paper); border:1px solid var(--line); padding:15px 17px;
+  transition:transform .15s ease, box-shadow .2s ease;
+}
+.contact-box:hover{ transform:translateY(-3px); box-shadow:0 12px 22px rgba(30,42,60,0.1); }
+.cb-label{ font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-soft); margin-bottom:3px; }
+.cb-value{ font-family:var(--font-display); font-weight:600; color:var(--ink); font-size:1rem; }
+.visit-map{ height:420px; border:1px solid var(--line); overflow:hidden; }
+.visit-map iframe{ width:100%; height:100%; }
+
+/* ---------- Footer ---------- */
+.site-footer{
+  background:var(--ink-2); color:var(--parchment);
+  text-align:center; padding:64px 24px 44px;
+}
+.site-footer .logo-real{ width:56px; height:56px; margin:0 auto 16px; border-radius:50%; }
+.footer-word{ font-family:var(--font-display); font-weight:600; font-style:italic; font-size:1.8rem; margin-bottom:6px; }
+.footer-sub{ opacity:.65; font-size:.88rem; margin-bottom:22px; font-family:var(--font-mono); }
+.footer-demo{ opacity:.5; font-size:.8rem; max-width:420px; margin:0 auto; line-height:1.6; }
+
+/* ---------- Logo real (placeholder mientras no llega el archivo) ---------- */
+.logo-real{ object-fit:cover; border-radius:50%; background:var(--brass); flex-shrink:0; }
+.nav-brand .logo-real{ width:38px; height:38px; }
+
+/* ---------- Float widgets ---------- */
+.float-widgets{ position:fixed; right:20px; bottom:24px; z-index:400; display:flex; flex-direction:column; gap:12px; }
+.float-btn{
+  width:52px; height:52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--ink); color:var(--parchment);
+  box-shadow:0 10px 24px rgba(30,42,60,0.3);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.float-btn-alt{ background:#3fa85a; color:#fff; }
+.float-btn-tiktok{ background:var(--leather); color:var(--parchment); }
+.float-btn svg{ width:24px; height:24px; }
+.float-btn:hover{ transform:translateY(-3px) scale(1.05); }
+.float-btn:active{ transform:scale(.92); }
+
+/* ---------- Reveal on scroll ---------- */
+.reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .visit-grid{ grid-template-columns:1fr; }
+  .visit-map{ height:320px; }
+}
+
+@media (max-width:800px){
+  .nav-toggle{ display:flex; }
+  .nav-links{
+    position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; background:rgba(20,28,41,0.98);
+    max-height:0; overflow:hidden; padding:0 20px;
+    transition:max-height .3s ease, padding .3s ease;
+  }
+  .nav-links.open{ max-height:340px; padding:14px 20px 20px; }
+  .nav-link{ width:100%; text-align:left; }
+  .nav-cta{ display:none; }
+  .section-inner{ padding:64px 20px 64px 26px; }
+  .float-widgets{ right:14px; bottom:18px; }
+  body{ font-size:17px; }
+
+  /* Colchón contra los íconos flotantes fijos (bug ya documentado en el
+     portafolio: el precio "Consultar" de la carta quedaba tapado por el
+     widget de WhatsApp/Instagram/TikTok en mobile). */
+  .menu-grid, .resenas-grid, .contact-grid{ padding-right:64px; }
+  .menu-item{ flex-wrap:wrap; }
+}
