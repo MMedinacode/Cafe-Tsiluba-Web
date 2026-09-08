@@ -1,44 +1,95 @@
 /* ============================================================
-   FOTOS Y LOGO — PENDIENTES (placeholder temporal)
+   FOTOS Y LOGO — REALES (el usuario las dejó en fotos/ el 08-09-2026)
    ============================================================
-   El usuario aún no ha dejado fotos reales en fotos/. Mientras tanto
-   se usan fotos de stock de Unsplash con temática cafetería/libros
-   (nunca fotos reales de otra cafetería del portafolio). Reemplazar
-   por las reales apenas lleguen. */
-const LOGO_SRC = 'https://images.unsplash.com/photo-1481833761820-0509d3217039?w=200&h=200&fit=crop&q=80';
-const HERO_SRC = 'https://images.unsplash.com/photo-1481833761820-0509d3217039?w=1600&q=80';
-const GAL_UNO_SRC = 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80';
-const GAL_DOS_SRC = 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80';
-const GAL_TRES_SRC = 'https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80';
+   - logo-real.jpg: logo oficial (ilustración de taza + libro abierto +
+     wordmark "Tsiluba · Cafetería Literaria").
+   - interior-vitrina.jpg: foto real del interior, vitrina de pastelería
+     y helados, pizarras de Pastelería/Café/Jugos de Temporada.
+   - rincon-literario.jpg: foto real del "Rincón Literario" — la
+     estantería con libros para leer en el local (parte de un post real
+     de Instagram, "Renovamos nuestro rincón literario").
+   Ambas capturas de pantalla se comprimieron a JPG ~70% antes de usarlas
+   (pesaban ~450-950KB originalmente). */
+const LOGO_SRC = 'fotos/logo-real.jpg';
+const HERO_SRC = 'fotos/interior-vitrina.jpg';
+const GAL_UNO_SRC = 'fotos/interior-vitrina.jpg';
+const GAL_DOS_SRC = 'fotos/rincon-literario.jpg';
 
 document.getElementById('logoNav').src = LOGO_SRC;
 document.getElementById('logoFooter').src = LOGO_SRC;
 document.getElementById('heroPhoto').src = HERO_SRC;
 document.getElementById('galUno').src = GAL_UNO_SRC;
 document.getElementById('galDos').src = GAL_DOS_SRC;
-document.getElementById('galTres').src = GAL_TRES_SRC;
 
 /* ============================================================
-   CARTA — productos reales (mencionados en reseñas de Google y en
-   las propias redes sociales de Café Tsiluba). Sin carta con precios
-   publicada en ningún canal — todo "Consultar", nunca inventado.
+   CARTA — precios reales, sacados de la foto oficial del menú del
+   local que el usuario dejó en fotos/ (menú "Cafetería Tsiluba",
+   con el mismo horario actualizado impreso al pie). Coinciden con
+   los mismos productos (a veces con formato/precio algo distinto,
+   por el recargo de la plataforma) que aparecen en su tienda de
+   PedidosYa (https://www.pedidosya.cl/restaurantes/santiago/cafe-tsiluba-menu).
+   Se usan los precios del menú físico del local, que es el que
+   corresponde a consumo en el local.
    ============================================================ */
 const MENU = {
   'Café': [
-    { n: 'Capuchino con arte latte', d: 'Mencionado por su nombre real en una reseña de Google.' },
-    { n: 'Espresso / Americano', d: '' },
-    { n: 'Chocolate caliente', d: 'Producto real destacado en su Instagram.' },
+    { n: 'Espresso', p: '$1.800', d: 'Doble $2.700' },
+    { n: 'Americano', p: '$2.000', d: 'Doble $3.000' },
+    { n: 'Café Latte', p: '$3.400', d: 'Doble $4.300' },
+    { n: 'Café Mocca', p: '$3.990', d: 'Doble $4.990' },
+    { n: 'Capuccino', p: '$2.890', d: 'Doble $4.000' },
+    { n: 'Capuccino Cream / Esencia', p: '$3.400', d: 'Doble $4.300' },
+    { n: 'Cortado', p: '$2.490', d: 'Doble $2.990' },
+    { n: 'Chocolate caliente', p: '$3.990', d: '' },
+    { n: 'Tetera (té)', p: '$2.490', d: 'Doble $3.000' },
+  ],
+  'Ice / Bebidas frías': [
+    { n: 'Ice Americano', p: '$3.000', d: 'Café espresso doble servido con hielo y agua fría.' },
+    { n: 'Ice Latte', p: '$3.500', d: 'Espresso combinado con leche fría y hielo.' },
+    { n: 'Ice Latte Esencia', p: '$4.000', d: 'Toque de vainilla, caramelo o avellana.' },
+    { n: 'Ice Mocca', p: '$4.500', d: 'Espresso, chocolate y leche fría con hielo.' },
+    { n: 'Vanilla Ice', p: '$4.000', d: '' },
+    { n: 'Café helado', p: '$4.500', d: '' },
+    { n: 'Batido', p: '$4.500', d: '' },
+    { n: 'Malteada', p: '$4.500', d: '' },
+    { n: 'Limonada', p: '$3.500', d: '' },
+    { n: 'Jugo natural', p: '$2.990', d: '' },
+    { n: 'Afogato', p: '$3.000', d: '' },
+  ],
+  'Helados': [
+    { n: 'Helado simple', p: '$1.650', d: '' },
+    { n: 'Helado doble', p: '$3.000', d: '' },
+    { n: 'Helado familiar', p: '$7.000', d: '6 sabores a elección.' },
+    { n: 'Copa', p: '$4.500', d: '' },
+    { n: 'Brownie + helado', p: '$4.990', d: '' },
   ],
   'Pastelería': [
-    { n: 'Torta cachito', d: '"La más rica de todas", según una reseña real de Google.' },
-    { n: 'Pastelería y tortas del día', d: 'Variedad real mencionada en reseñas — "pasteles frescos".' },
-    { n: 'Brownie', d: 'Producto real destacado en su Instagram.' },
+    { n: 'Torta Reina Ana', p: '$3.600', d: '' },
+    { n: 'Torta Sacher', p: '$4.000', d: '' },
+    { n: 'Torta Holandesa', p: '$3.600', d: '' },
+    { n: 'Torta Tres Leches', p: '$3.600', d: '' },
+    { n: 'Torta Cachito', p: '$3.600', d: '"La más rica de todas", según una reseña real de Google.' },
+    { n: 'Tiramisú', p: '$3.600', d: '' },
+    { n: 'Cheesecake', p: '$3.800', d: '' },
+    { n: 'Panqueque Naranja Chocolate', p: '$3.600', d: '' },
+    { n: 'Carrot Cake', p: '$3.600', d: '' },
+    { n: 'Kuchen de Manzana', p: '$2.900', d: '' },
+    { n: 'Kuchen Frutos Rojos', p: '$2.900', d: '' },
+    { n: 'Kuchen de Nuez', p: '$2.900', d: '' },
+    { n: 'Pie de Limón', p: '$2.900', d: '' },
   ],
-  'Para compartir': [
-    { n: 'Tabla para compartir', d: 'Real, promocionada en su propio Instagram ("¿vendrás por tu tablita?").' },
+  'Sándwiches': [
+    { n: 'Mechada Luchin', p: '$5.500', d: 'Carne mechada y doble queso.' },
+    { n: 'Mechada Vicente', p: '$5.500', d: 'Carne mechada, champiñón y queso.' },
+    { n: 'Pollo Javito', p: '$5.500', d: 'Pollo desmenuzado y mayonesa.' },
+    { n: 'Pollo de Franco', p: '$5.500', d: 'Pollo desmenuzado, mayonesa y pimentón rojo.' },
+    { n: 'Pollo Simone', p: '$5.500', d: 'Pollo desmenuzado, mayonesa y palta.' },
+    { n: 'Cabrito Gabriel', p: '$5.500', d: 'Queso de cabra, tomate y albahaca.' },
   ],
-  'Bebidas frías': [
-    { n: 'Bebidas frías de temporada', d: 'Variedad real mencionada en su Instagram.' },
+  'Bollería': [
+    { n: 'Brownie Vegano', p: '$2.000', d: '' },
+    { n: 'Mendocino', p: '$1.500', d: '' },
+    { n: 'Maicena', p: '$1.500', d: '' },
   ],
 };
 
@@ -71,7 +122,7 @@ categorias.forEach((cat, i) => {
         <p class="menu-item-name">${item.n}</p>
         ${item.d ? `<p class="menu-item-desc">${item.d}</p>` : ''}
       </div>
-      <span class="menu-item-price">Consultar</span>
+      <span class="menu-item-price">${item.p}</span>
     `;
     grid.appendChild(row);
   });
@@ -80,27 +131,28 @@ categorias.forEach((cat, i) => {
 });
 
 /* ============================================================
-   HORARIO EN VIVO — real, verificado en el panel de Google (más
-   confiable que posts viejos de redes sociales).
-   Lunes a sábado 12:30-20:30, Domingo 15:30-20:30.
+   HORARIO EN VIVO — real, actualizado según el menú/story oficial
+   del local (el horario cambió recientemente, la ficha de Google
+   aún no lo reflejaba). Lunes a sábado 12:00-21:00, Domingo y
+   festivos 15:00-21:00.
    ============================================================ */
 (function () {
   const now = new Date();
   const day = now.getDay(); // 0 = domingo
   const minutes = now.getHours() * 60 + now.getMinutes();
-  const openMin = day === 0 ? 15 * 60 + 30 : 12 * 60 + 30;
-  const closeMin = 20 * 60 + 30;
+  const openMin = day === 0 ? 15 * 60 : 12 * 60;
+  const closeMin = 21 * 60;
   const isOpen = minutes >= openMin && minutes < closeMin;
 
   const statusDot = document.getElementById('statusDot');
   const statusText = document.getElementById('statusText');
   const visitStatus = document.getElementById('visit-status');
-  const openHour = day === 0 ? '15:30' : '12:30';
+  const openHour = day === 0 ? '15:00' : '12:00';
 
   if (isOpen) {
     statusDot.classList.remove('closed');
-    statusText.textContent = 'Abierto ahora · cierra 20:30';
-    visitStatus.textContent = 'Abierto ahora — cierra a las 20:30';
+    statusText.textContent = 'Abierto ahora · cierra 21:00';
+    visitStatus.textContent = 'Abierto ahora — cierra a las 21:00';
   } else {
     statusDot.classList.add('closed');
     statusText.textContent = `Cerrado ahora · abre ${openHour}`;
