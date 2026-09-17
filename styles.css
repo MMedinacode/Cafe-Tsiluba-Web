@@ -215,7 +215,10 @@ main{ padding-top:64px; }
 .menu-tab-btn:active{ transform:scale(.95); }
 .menu-panel{ display:none; }
 .menu-panel.active{ display:block; }
-.menu-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(min(300px,100%),1fr)); gap:16px; }
+/* Dos columnas fijas, no auto-fit: con auto-fit entraban tres en pantalla
+   ancha y las filas quedaban apretadas, sin aire para la descripcion. */
+.menu-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:4px 34px; }
+@media (max-width:820px){ .menu-grid{ grid-template-columns:1fr; } }
 .menu-item{
   display:flex; justify-content:space-between; align-items:flex-start; gap:14px;
   background:var(--paper); border:1px solid var(--line); padding:20px 22px;
@@ -276,8 +279,13 @@ main{ padding-top:64px; }
   box-shadow:0 10px 24px rgba(30,42,60,0.3);
   transition:transform .18s ease, box-shadow .18s ease;
 }
-.float-btn-alt{ background:#3fa85a; color:#fff; }
-.float-btn-tiktok{ background:var(--leather); color:var(--parchment); }
+.float-btn-alt{ background:#25D366; color:#fff; }
+/* Cada red con su color de verdad: TikTok es negro y el de Instagram es
+   su degradado. Antes los dos salian en tonos de la paleta del sitio y
+   no se reconocian de un vistazo. */
+.float-btn-tiktok{ background:#010101; color:#fff; }
+#floatInstagram{ background:linear-gradient(45deg,#F9CE34,#EE2A7B 50%,#6228D7); color:#fff; }
+.float-btn-pedidosya{ background:#FA0050; color:#fff; }
 .float-btn svg{ width:24px; height:24px; }
 .float-btn:hover{ transform:translateY(-3px) scale(1.05); }
 .float-btn:active{ transform:scale(.92); }
@@ -322,4 +330,26 @@ main{ padding-top:64px; }
     animation-duration:.01ms !important; animation-iteration-count:1 !important;
     transition-duration:.01ms !important; scroll-behavior:auto !important;
   }
+}
+
+
+/* ---------- PedidosYa: va a la IZQUIERDA, separado de las redes ----------
+   Los flotantes de la derecha son para hablar con el local. Este es para
+   comprar, que es otra intencion: por eso va al lado contrario y con
+   texto, no solo icono. */
+.float-pedido{
+  position:fixed; left:20px; bottom:24px; z-index:400;
+  display:flex; align-items:center; gap:9px;
+  background:#FA0050; color:#fff; text-decoration:none;
+  padding:12px 18px; border-radius:40px; font-weight:700; font-size:.9rem;
+  box-shadow:0 8px 22px rgba(250,0,80,.34);
+  transition:transform .2s, box-shadow .2s;
+}
+.float-pedido:hover{ transform:translateY(-3px); box-shadow:0 12px 28px rgba(250,0,80,.42); }
+.float-pedido:active{ transform:scale(.95); }
+.float-pedido svg{ width:20px; height:20px; flex:none; }
+@media (max-width:640px){
+  .float-pedido{ left:14px; bottom:18px; padding:11px 15px; font-size:.84rem; }
+  .float-pedido .fp-txt{ display:none; }
+  .float-pedido{ border-radius:50%; width:52px; height:52px; padding:0; justify-content:center; }
 }
